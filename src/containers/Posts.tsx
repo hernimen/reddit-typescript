@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import Post from '../../components/post/Post';
+import Sidebar from '../components/sidebar';
 
 export function Posts(): JSX.Element {
     const [posts, setPosts] = useState<any>([])
@@ -25,16 +25,7 @@ export function Posts(): JSX.Element {
 
     return (
         <div data-test="posts-component">
-            {posts?.map((post: any, index: number): JSX.Element => {
-                const { data } = post
-                console.log(data?.thumbnail)
-                return <Post
-                    title={data.title}
-                    key={index}
-                    author={data.author}
-                    date={data.created_utc}
-                    image={data?.thumbnail} />
-            })}
+            <Sidebar posts={posts} />
         </div>
     )
 }

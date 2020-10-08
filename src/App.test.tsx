@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
 import App from './App';
+import rootReducer from './store';
+import { createStore } from 'redux';
+const store = createStore(rootReducer);
 
 test('renders learn react link', () => {
   const app = render(

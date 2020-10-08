@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from './Post';
+import Post from '.';
 import { render, screen, configure } from '@testing-library/react';
 
 configure({
