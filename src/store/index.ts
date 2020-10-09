@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import PostsReducer from '../reducers/posts-reducer'
+import postsReducer from '../reducers/posts-reducer'
 const rootReducer = combineReducers({
-  PostsReducer
+  postsReducer
 })
 
 export default rootReducer
