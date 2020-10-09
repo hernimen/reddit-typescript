@@ -3,6 +3,11 @@ export interface initialState {
         posts: [],
         loading: boolean,
         error: Error,
+        post: {
+            data: {
+                id: number;
+            }
+        }
     }
 }
 

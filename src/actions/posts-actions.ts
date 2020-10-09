@@ -11,11 +11,12 @@ export const fetchPosts = () => {
     dispatch(fetchPostsStarted())
     try {
       const response = await fetch(
-        'https://www.reddit.com/r/redditdev/top.json'
+        // 'https://www.reddit.com/r/redditdev/top.json?limit=30'
+        'https://www.reddit.com/r/mac/top.json?limit=20'
       )
       const json = await response.json()
       const posts = json.data.children
-      console.log(posts, 'POSTS')
+      console.log(posts, 'posts')
       dispatch(fetchPostsSuccess(posts))
     } catch (error) {
       dispatch(fetchPostsFailure(error))

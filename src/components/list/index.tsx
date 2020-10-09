@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from '../post'
+import Post from '../item'
 import styles from "./list.module.css";
 
 export interface PostProps {
@@ -24,6 +24,7 @@ export interface PostsProps {
 const List = ({ items, handleClick, handleDismiss }) => {
     return (
         <div data-test="list" className={styles.list}>
+            <h1>Reddit Posts</h1>
             {items.map((item: PostProps) => {
                 return (
                     <Post

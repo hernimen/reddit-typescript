@@ -11,7 +11,8 @@ import {
 const initialState = {
   posts: [],
   loading: false,
-  error: null
+  error: null,
+  post: {}
 }
 
 const PostsReducer = (state = initialState, action: AnyAction) => {
@@ -35,6 +36,12 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
         posts: null,
         error: action.payload.error
       }
+    case POSTS_REMOVED:
+      return {
+        ...state,
+        post: {},
+        posts: []
+      }
     case POST_DISMISS:
       return {
         ...state,
@@ -45,6 +52,9 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
     case POST_CLICKED:
       return {
         ...state,
+        post: state.posts.find(
+          (post: { data: { id: string } }) => post.data.id === action.payload
+        ),
         posts: state.posts.map(
           (post: { data: { id: number; clicked: boolean } }) => {
             if (post.data.id === action.payload && !post.data.clicked) {
@@ -53,11 +63,6 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
             return post
           }
         )
-      }
-    case POSTS_REMOVED:
-      return {
-        ...state,
-        posts: []
       }
     default:
       return state

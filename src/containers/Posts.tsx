@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { clickPost, dismissPost, fetchPosts, removePosts } from '../actions/posts-actions';
 import { initialState } from '../types';
 import List from '../components/list';
+import Detail from '../components/detail';
+import Layout from '../components/layout';
 
 interface PostsProps {
     posts?: Array<PostProps>
@@ -23,14 +25,17 @@ export function Posts(): JSX.Element {
     const dispatch = useDispatch();
     // const [lastPost, setLastPost] = useState<any>([])
     // const [currentPosts, setCurrentPosts] = useState([]);
-    const { posts, loading, error } = useSelector((state: initialState) => state.postsReducer);
+    const { posts, loading, error, post } = useSelector((state: initialState) => state.postsReducer);
 
     useEffect(() => {
         dispatch(fetchPosts())
     }, [])
 
     const handleClick = useCallback((id: number) => {
+        // if (post.data && post.data.id !== id) {
+        //     console.log('holaaa')
         dispatch(clickPost(id))
+        // }
     }, [])
 
     const handleDismiss = useCallback((id: number) => {
@@ -45,7 +50,12 @@ export function Posts(): JSX.Element {
                 <div>Ocurrio un error </div>
             }
             {!error && !loading &&
-                <List items={posts} handleClick={handleClick} handleDismiss={handleDismiss} />
+                <Layout>
+                    <List items={posts} handleClick={handleClick} handleDismiss={handleDismiss} />
+                    {post &&
+                        <Detail item={post} />
+                    }
+                </Layout>
             }
             <div onClick={() => dispatch(removePosts())}> REMOVER TODO</div>
         </div>

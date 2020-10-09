@@ -1,8 +1,10 @@
 import React from 'react';
+import styles from './detail.module.css'
 
-const Detail = () => {
+const Detail = ({ item }) => {
+    console.log(item, 'SOY EL ITEM SELECIONADO')
     return (
-        <div>
+        <div className={styles.detail}>
             Detail
         </div>
     )
