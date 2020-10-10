@@ -1,6 +1,18 @@
 .item {
-  border-bottom: 1px solid grey;
-  padding: 16px;
+  padding: 16px 0 16px 0;
+  text-align: left;
+  width: 100%;
+}
+
+.item::after {
+  content: '';
+  width: 270px;
+  height: 1px;
+  background-color: grey;
+  left: 12px;
+  position: relative;
+  display: flex;
+  top: 20px;
 }
 
 .item__top {
@@ -9,19 +21,45 @@
 }
 
 .item__top__author {
+  padding: 0 8px 0 8px;
+}
+
+.item__top__date {
   padding-right: 8px;
 }
 
 .item__body {
   display: flex;
+  padding: 0 8px 0 8px;
 }
 .item__body__img {
   padding: 0 8px 8px 0;
+  object-fit: cover;
+  width: 80px;
+  height: 100px;
 }
 
 .item__bottom {
   display: flex;
+  justify-content: space-between;
+  padding: 0 8px 0 8px;
 }
 .item__bottom > div {
   padding-right: 8px;
+}
+
+.item__read {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: flex;
+  background-color: deepskyblue;
+  position: absolute;
+}
+
+.item__bottom_comments {
+  color: orange;
+}
+.item__body__title {
+  max-width: 190px;
 }

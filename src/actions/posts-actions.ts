@@ -8,17 +8,15 @@ export const POST_DISMISS = 'POST_DISMISS'
 export const POSTS_REMOVED = 'POSTS_REMOVED'
 export const POST_SELECTED = 'POST_SELECTED'
 
-export const fetchPosts = () => {
+export const fetchPosts = (lastItemId: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch(fetchPostsStarted())
     try {
       const response = await fetch(
-        // 'https://www.reddit.com/r/redditdev/top.json?limit=30'
-        'https://www.reddit.com/r/mac/top.json?limit=20'
+        `https://www.reddit.com/r/mac/top.json?limit=10&after=${lastItemId}`
       )
       const json = await response.json()
       const posts = json.data.children
-      console.log(posts, 'posts')
       dispatch(fetchPostsSuccess(posts))
     } catch (error) {
       dispatch(fetchPostsFailure(error))

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { clickPost, dismissPost, fetchPosts, removePosts } from '../actions/posts-actions';
 import { initialState } from '../types';
@@ -23,13 +23,16 @@ interface PostProps {
 
 export function Posts(): JSX.Element {
     const dispatch = useDispatch();
-    // const [lastPost, setLastPost] = useState<any>([])
-    // const [currentPosts, setCurrentPosts] = useState([]);
+    const [lastItemId, setLastItemId] = useState('')
     const { posts, loading, error, post } = useSelector((state: initialState) => state.postsReducer);
 
     useEffect(() => {
-        dispatch(fetchPosts())
-    }, [])
+        dispatch(fetchPosts(lastItemId))
+    }, [lastItemId])
+
+    const handleLoadMorePosts = () => {
+        setLastItemId(posts[posts.length - 1].data.name)
+    }
 
     const handleClick = useCallback((id: number) => {
         // if (!post.data || (post.data && post.data.id !== id)) {
@@ -52,20 +55,20 @@ export function Posts(): JSX.Element {
             {!loading && error &&
                 <div>Ocurrio un error </div>
             }
-            {!error && !loading &&
+            {!error &&
                 <Layout>
                     <List
                         items={posts}
                         handleClick={handleClick}
                         handleDismiss={handleDismiss}
                         handleRemovePosts={handleRemovePosts}
+                        handleLoadMorePosts={handleLoadMorePosts}
                     />
                     {post &&
                         <Detail item={post} />
                     }
                 </Layout>
             }
-            {/* <div onClick={() => dispatch(removePosts())}> REMOVER TODO</div> */}
         </div>
     )
 }

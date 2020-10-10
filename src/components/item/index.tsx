@@ -15,27 +15,33 @@ interface PostProps {
 }
 
 const Item = ({ id, title, author, date, image, comments, clicked, handleClick, handleDismiss }: PostProps) => {
+    const handleError = (event: any) => {
+        event.src = 'https://static.wikia.nocookie.net/dogelore/images/a/a0/Quieres.png/revision/latest/top-crop/width/360/height/450?cb=20190617094240l'
+    }
+
     return (
         <div data-test="post-component" className={styles.item}>
             <div className={styles.item__top}>
-                {clicked &&
-                    <div> FUI CLICKEADO </div>}
+                {!clicked &&
+                    <div className={styles.item__read}>
+                    </div>
+                }
                 <span data-test="author" className={styles.item__top__author}>
                     <strong>{author}</strong>
                 </span>
-                <span data-test="date">
+                <span data-test="date" className={styles.item__top__date}>
                     {DateParser.parseDateIntoTimeAgo(date)}
                 </span>
             </div>
             <div className={styles.item__body}>
-                <img src={image} alt="" className={styles.item__body__img} onClick={() => handleClick(id)} />
-                <div data-test="title">
+                <img src={image} alt="" className={styles.item__body__img} onClick={() => handleClick(id)} onError={handleError} />
+                <div data-test="title" className={styles.item__body__title}>
                     {title}
                 </div>
             </div>
             <div className={styles.item__bottom}>
                 <div onClick={() => handleDismiss(id)}>Dismiss Post</div>
-                <span data-test="comments">{comments} comments</span>
+                <span data-test="comments" className={styles.item__bottom_comments}>{comments} comments</span>
             </div>
         </div>
     )

@@ -1,6 +1,10 @@
 export interface initialState {
     postsReducer: {
-        posts: [],
+        posts: [{
+            data: {
+                name: string;
+            }
+        }],
         loading: boolean,
         error: Error,
         post: {

@@ -27,7 +27,7 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        posts: action.payload,
+        posts: state.posts.concat(action.payload),
         error: null
       }
     case FETCH_POSTS_FAILURE:
