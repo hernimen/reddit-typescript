@@ -14,6 +14,7 @@ export interface PostProps {
         clicked: boolean;
         handleClick: (id: number) => void;
         handleDismiss: (id: number) => void;
+        handleRemovePosts: () => void;
     }
 }
 
@@ -21,7 +22,7 @@ export interface PostsProps {
     posts?: Array<PostProps>
 }
 
-const List = ({ items, handleClick, handleDismiss }) => {
+const List = ({ items, handleClick, handleDismiss, handleRemovePosts }) => {
     return (
         <div data-test="list" className={styles.list}>
             <h1>Reddit Posts</h1>
@@ -41,6 +42,7 @@ const List = ({ items, handleClick, handleDismiss }) => {
                     />
                 )
             })}
+            <div className={styles.list__removebar} onClick={() => handleRemovePosts()}>Remove Posts</div>
         </div>
     )
 }

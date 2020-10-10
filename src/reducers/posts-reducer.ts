@@ -5,7 +5,8 @@ import {
   FETCH_POSTS_FAILURE,
   POST_CLICKED,
   POST_DISMISS,
-  POSTS_REMOVED
+  POSTS_REMOVED,
+  POST_SELECTED
 } from '../actions/posts-actions'
 
 const initialState = {
@@ -52,9 +53,6 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
     case POST_CLICKED:
       return {
         ...state,
-        post: state.posts.find(
-          (post: { data: { id: string } }) => post.data.id === action.payload
-        ),
         posts: state.posts.map(
           (post: { data: { id: number; clicked: boolean } }) => {
             if (post.data.id === action.payload && !post.data.clicked) {
@@ -63,6 +61,11 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
             return post
           }
         )
+      }
+    case POST_SELECTED:
+      return {
+        ...state,
+        post: action.payload
       }
     default:
       return state

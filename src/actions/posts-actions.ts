@@ -1,10 +1,12 @@
 import { Action, Dispatch } from 'redux'
+import { PostProps } from '../types'
 export const FETCH_POSTS_STARTED = 'FETCH_POSTS_STARTED'
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
 export const POST_CLICKED = 'POST_CLICKED'
 export const POST_DISMISS = 'POST_DISMISS'
 export const POSTS_REMOVED = 'POSTS_REMOVED'
+export const POST_SELECTED = 'POST_SELECTED'
 
 export const fetchPosts = () => {
   return async (dispatch: Dispatch<Action>) => {
@@ -51,6 +53,13 @@ export const clickPost = (id: number) => {
   }
 }
 
+export const selectPost = (post: PostProps) => {
+  return {
+    type: POST_SELECTED,
+    payload: post
+  }
+}
+
 export const dismissPost = (id: number) => {
   return {
     type: POST_DISMISS,
@@ -60,6 +69,6 @@ export const dismissPost = (id: number) => {
 
 export const removePosts = () => {
   return {
-    type: POSTS_REMOVED,
+    type: POSTS_REMOVED
   }
 }

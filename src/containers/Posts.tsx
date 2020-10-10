@@ -32,14 +32,17 @@ export function Posts(): JSX.Element {
     }, [])
 
     const handleClick = useCallback((id: number) => {
-        // if (post.data && post.data.id !== id) {
-        //     console.log('holaaa')
+        // if (!post.data || (post.data && post.data.id !== id)) {
         dispatch(clickPost(id))
         // }
     }, [])
 
     const handleDismiss = useCallback((id: number) => {
         dispatch(dismissPost(id))
+    }, [])
+
+    const handleRemovePosts = useCallback(() => {
+        dispatch(removePosts())
     }, [])
 
     return (
@@ -51,13 +54,18 @@ export function Posts(): JSX.Element {
             }
             {!error && !loading &&
                 <Layout>
-                    <List items={posts} handleClick={handleClick} handleDismiss={handleDismiss} />
+                    <List
+                        items={posts}
+                        handleClick={handleClick}
+                        handleDismiss={handleDismiss}
+                        handleRemovePosts={handleRemovePosts}
+                    />
                     {post &&
                         <Detail item={post} />
                     }
                 </Layout>
             }
-            <div onClick={() => dispatch(removePosts())}> REMOVER TODO</div>
+            {/* <div onClick={() => dispatch(removePosts())}> REMOVER TODO</div> */}
         </div>
     )
 }

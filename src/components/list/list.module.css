@@ -6,3 +6,10 @@
   color: white;
   align-items: center;
 }
+.list__removebar {
+  position: sticky;
+  bottom: 0;
+  background-color: black;
+  padding: 16px 0 16px;
+  width: 100%;
+}
