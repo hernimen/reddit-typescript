@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../button';
 import Post from '../item'
 import styles from "./list.module.css";
 export interface PostProps {
@@ -15,7 +16,7 @@ export interface PostProps {
         handleDismiss: (id: number) => void;
         handleRemovePosts: () => void;
         handleLoadMorePosts: () => void;
-        listRef: any;
+        listRef?: any;
         isListActive: boolean;
         loading: boolean;
     }
@@ -45,8 +46,8 @@ const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoad
                     />
                 )
             })}
-            <button disabled={loading} className={styles.list__loadMore} data-test="load-more" onClick={() => handleLoadMorePosts()}>Load More</button>
-            <button disabled={loading || !items.length} className={styles.list__removebar} onClick={() => handleRemovePosts()}>Dismiss All</button>
+            <Button disabled={loading} dataTest="load-more" onClick={() => handleLoadMorePosts()}>Load more</Button>
+            <Button disabled={loading || !items.length } dataTest="remove-all" onClick={() => handleRemovePosts()}>Dismiss All</Button>
         </div>
     )
 }

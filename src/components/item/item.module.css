@@ -51,6 +51,7 @@
 
 .item__top__author {
   padding: 0 8px 0 8px;
+  margin: 0;
 }
 
 .item__top__date {

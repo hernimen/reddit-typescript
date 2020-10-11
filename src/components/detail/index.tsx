@@ -11,4 +11,4 @@ const Detail = ({ item }) => {
     )
 }
 
-export default Detail;
+export default React.memo(Detail);

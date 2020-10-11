@@ -1,5 +1,6 @@
 import React from 'react';
 import DateParser from '../../utils/dateParser';
+import Button from '../button';
 import styles from './item.module.css';
 interface PostProps {
     id: number;
@@ -15,7 +16,7 @@ interface PostProps {
 
 const Item = ({ id, title, author, date, image, comments, clicked, handleClick, handleDismiss }: PostProps) => {
     const handleError = (event: any) => {
-        event.src = 'https://static.wikia.nocookie.net/dogelore/images/a/a0/Quieres.png/revision/latest/top-crop/width/360/height/450?cb=20190617094240l'
+        event.src = 'https://via.placeholder.com/150'
     }
 
     return (
@@ -25,9 +26,9 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                     <div className={styles.item__read} data-test="item-read">
                     </div>
                 }
-                <h2 data-test="author" className={styles.item__top__author}>
+                <p data-test="author" className={styles.item__top__author}>
                     <strong>{author}</strong>
-                </h2>
+                </p>
                 <span data-test="date" className={styles.item__top__date}>
                     {DateParser.parseDateIntoTimeAgo(date)}
                 </span>
@@ -40,11 +41,11 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                 <div className={styles.gg_chevron_right}></div>
             </div>
             <div className={styles.item__bottom} >
-                <button onClick={() => handleDismiss(id)} className={styles.item__bottom_dissmiss_ctn}>
+                <Button onClick={() => handleDismiss(id)} dataTest="data">
                     <span className={styles.gg_close_o} >
                     </span>
                     <p> Dismiss Post</p>
-                </button>
+                </Button>
                 <span data-test="comments" className={styles.item__bottom_comments}>{comments} comments</span>
             </div>
         </div>

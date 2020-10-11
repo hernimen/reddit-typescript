@@ -1,4 +1,4 @@
-import { configure, render, screen } from '@testing-library/react';
+import { act, configure, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import List from '.';
 import MockedPosts from '../../mocks/posts.mock';
@@ -14,28 +14,43 @@ configure({
 
 describe('List component', () => {
     beforeEach(() => {
-        render(<List
+        render(
+            <List
             items={MockedPosts}
             handleclick={handleclick}
             handleDismiss={handleDismiss}
             handleRemovePosts={handleRemovePosts}
             handleLoadMorePosts={handleLoadMorePosts}
-            isListActive={true}
-        />
+            isListActive={true}/>
         )
+    })
+    afterEach(() => {
+        jest.clearAllMocks()
     })
 
     it('Should render the list', () => {
         expect(screen.getByTestId('list'))
     })
 
-    // it('Should call the handleLoadMorePosts', () => {
-    //     let loadMoreButton;
-    //     act(() => {
-    //         loadMoreButton = screen.getByTestId('load-more')
-    //         fireEvent.click(loadMoreButton)
-    //     })
+    it('Should call the handleLoadMorePosts', done => {
+        let loadMoreButton;
+        act(() => {
+            loadMoreButton = screen.getByTestId('load-more-button')
+            fireEvent.click(loadMoreButton)
+            done();
+        })
 
-    //     expect(loadMoreButton)
-    // })
+        expect(handleLoadMorePosts.mock.calls.length).toBe(1)
+    })
+
+    it('Should call the Dismiss All button', done => {
+        let dismissButton;
+        act(() => {
+            dismissButton = screen.getByTestId('remove-all-button')
+            fireEvent.click(dismissButton)
+            done();
+        })
+
+        expect(handleRemovePosts.mock.calls.length).toBe(1)
+    })
 })

@@ -62,16 +62,4 @@ describe('Post component', () => {
         expect(screen.getByTestId('item-read'))
             .toBeDefined()
     });
-
-    // it('Should hide the read dv', done => {
-
-    //     act(() => {
-    //         const image = screen.getByTestId('image')
-    //         fireEvent.click(image)
-    //         done();
-    //     })
-
-    //     expect(screen.getByTestId('item-read'))
-    //         .toBeUndefined()
-    // })
 })
