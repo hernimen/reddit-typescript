@@ -1,3 +1,28 @@
 .detail {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
+}
+
+@media only screen and (min-width: 600px) {
+    .detail {
+        max-width: 500px;
+    }
+  }
+
+.author {
+  display: flex;
+}
+
+.title {
+  display: flex;
+  word-wrap: break-word;
+}
+
+.image {
+  display: flex;
+  object-fit: cover;
+  width: 80px;
+  height: 100px;
+  margin: 0 auto;
 }

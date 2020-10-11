@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { clickPost, dismissPost, fetchPosts, removePosts } from '../actions/posts-actions';
 import { initialState } from '../types';
@@ -22,23 +22,45 @@ interface PostProps {
 }
 
 export function Posts(): JSX.Element {
+    const listRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
     const [lastItemId, setLastItemId] = useState('')
     const { posts, loading, error, post } = useSelector((state: initialState) => state.postsReducer);
+    const [isListActive, setIsListActive] = useState(false)
 
     useEffect(() => {
         dispatch(fetchPosts(lastItemId))
-    }, [lastItemId])
+    }, [])
+
+    useEffect(() => {
+        const handleClickOutsideList = (event) => {
+            if (listRef.current && !listRef.current.contains(event.target)) {//chequear esto
+                setIsListActive(true)
+                return;
+            }
+            setIsListActive(false)
+        }
+        document.addEventListener("mousedown", handleClickOutsideList);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideList);
+        };
+    }, []);
 
     const handleLoadMorePosts = () => {
-        setLastItemId(posts[posts.length - 1].data.name)
+        if (posts.length) {
+            setLastItemId(posts[posts.length - 1].data.name)
+            dispatch(fetchPosts(posts[posts.length - 1].data.name))
+            return
+        }
+        setLastItemId('')//arreglar que se pueda volver a cargar cuando se elimino todo y cargo deveulta
+        dispatch(fetchPosts(lastItemId))
     }
 
     const handleClick = useCallback((id: number) => {
-        // if (!post.data || (post.data && post.data.id !== id)) {
-        dispatch(clickPost(id))
-        // }
-    }, [])
+        if (!post.data || (post.data.id !== id)) {
+            dispatch(clickPost(id))
+        }
+    }, [post.data])
 
     const handleDismiss = useCallback((id: number) => {
         dispatch(dismissPost(id))
@@ -63,8 +85,10 @@ export function Posts(): JSX.Element {
                         handleDismiss={handleDismiss}
                         handleRemovePosts={handleRemovePosts}
                         handleLoadMorePosts={handleLoadMorePosts}
+                        listRef={listRef}
+                        isListActive={isListActive}
                     />
-                    {post &&
+                    {post.data &&
                         <Detail item={post} />
                     }
                 </Layout>

@@ -1,11 +1,24 @@
 .list {
+  width: 300px;
+}
+
+.list,
+.listClosed {
+  height: 100vh;
+  z-index: 1;
+  position: relative;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
-  width: 300px;
   background-color: black;
   color: white;
   align-items: center;
-  height: 100%;
+  transition: all 0.5s;
+}
+
+.listClosed {
+  /* left: -270px; */
+  margin-left: -270px;
 }
 
 .list__removebar,
@@ -19,7 +32,13 @@
   padding: 16px 0 16px;
   width: 100%;
 }
+.list__removebar:hover {
+  cursor: pointer;
+}
 
 .list__loadMore {
   padding: 16px;
+}
+.list__loadMore:hover {
+  cursor: pointer;
 }

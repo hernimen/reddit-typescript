@@ -16,6 +16,8 @@ export interface PostProps {
         handleDismiss: (id: number) => void;
         handleRemovePosts: () => void;
         handleLoadMorePosts: () => void;
+        listRef: any;
+        isListActive: boolean;
     }
 }
 
@@ -23,9 +25,9 @@ export interface PostsProps {
     posts?: Array<PostProps>
 }
 
-const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts }) => {
+const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts, listRef, isListActive }) => {
     return (
-        <div data-test="list" className={styles.list}>
+        <div data-test="list" className={isListActive ? styles.listClosed : styles.list} ref={listRef}>
             <h1>Reddit Posts</h1>
             {items.map((item: PostProps) => {
                 return (

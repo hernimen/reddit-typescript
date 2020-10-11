@@ -1,7 +1,6 @@
 import React from 'react';
 import DateParser from '../../utils/dateParser';
 import styles from './item.module.css';
-
 interface PostProps {
     id: number;
     title: string;
@@ -23,7 +22,7 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
         <div data-test="post-component" className={styles.item}>
             <div className={styles.item__top}>
                 {!clicked &&
-                    <div className={styles.item__read}>
+                    <div className={styles.item__read} data-test="item-read">
                     </div>
                 }
                 <span data-test="author" className={styles.item__top__author}>
@@ -34,13 +33,18 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                 </span>
             </div>
             <div className={styles.item__body}>
-                <img src={image} alt="" className={styles.item__body__img} onClick={() => handleClick(id)} onError={handleError} />
+                <img src={image} alt="" data-test="image" className={styles.item__body__img} onClick={() => handleClick(id)} onError={handleError} />
                 <div data-test="title" className={styles.item__body__title}>
                     {title}
                 </div>
+                <div className={styles.gg_chevron_right}></div>
             </div>
-            <div className={styles.item__bottom}>
-                <div onClick={() => handleDismiss(id)}>Dismiss Post</div>
+            <div className={styles.item__bottom} >
+                <div onClick={() => handleDismiss(id)} className={styles.item__botto_dissmiss_ctn}>
+                    <span className={styles.gg_close_o} >
+                    </span>
+                    <span> Dismiss Post</span>
+                </div>
                 <span data-test="comments" className={styles.item__bottom_comments}>{comments} comments</span>
             </div>
         </div>
