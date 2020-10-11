@@ -45,8 +45,8 @@ const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoad
                     />
                 )
             })}
-            <div className={styles.list__loadMore} onClick={() => handleLoadMorePosts()}>Load More</div>
-            <div className={styles.list__removebar} onClick={() => handleRemovePosts()}>Dismiss All</div>
+            <button className={styles.list__loadMore} data-test="load-more" onClick={() => handleLoadMorePosts()}>Load More</button>
+            <button className={styles.list__removebar} onClick={() => handleRemovePosts()}>Dismiss All</button>
         </div>
     )
 }

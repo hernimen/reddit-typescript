@@ -120,6 +120,6 @@
 .gg_close_o::after {
   transform: rotate(-45deg);
 }
-.item__botto_dissmiss_ctn {
+.item__bottom_dissmiss_ctn {
   display: flex;
 }

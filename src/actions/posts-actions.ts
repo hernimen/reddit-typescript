@@ -7,7 +7,7 @@ export const POST_DISMISS = 'POST_DISMISS'
 export const POSTS_REMOVED = 'POSTS_REMOVED'
 export const POST_SELECTED = 'POST_SELECTED'
 
-export const fetchPosts = (lastItemId: null | string) => {
+export const fetchPosts = (lastItemId: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch(fetchPostsStarted())
     try {

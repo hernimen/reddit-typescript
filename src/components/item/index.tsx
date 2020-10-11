@@ -40,11 +40,11 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                 <div className={styles.gg_chevron_right}></div>
             </div>
             <div className={styles.item__bottom} >
-                <div onClick={() => handleDismiss(id)} className={styles.item__botto_dissmiss_ctn}>
+                <button onClick={() => handleDismiss(id)} className={styles.item__bottom_dissmiss_ctn}>
                     <span className={styles.gg_close_o} >
                     </span>
                     <span> Dismiss Post</span>
-                </div>
+                </button>
                 <span data-test="comments" className={styles.item__bottom_comments}>{comments} comments</span>
             </div>
         </div>

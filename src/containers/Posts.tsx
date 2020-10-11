@@ -7,10 +7,6 @@ import List from '../components/list';
 import Detail from '../components/detail';
 import Layout from '../components/layout';
 
-interface PostsProps {
-    posts?: Array<PostProps>
-}
-
 interface PostProps {
     data: {
         title: string;
@@ -52,7 +48,7 @@ export function Posts(): JSX.Element {
             dispatch(fetchPosts(posts[posts.length - 1].data.name))
             return
         }
-        setLastItemId('')//arreglar que se pueda volver a cargar cuando se elimino todo y cargo deveulta
+        setLastItemId('')
         dispatch(fetchPosts(lastItemId))
     }
 
