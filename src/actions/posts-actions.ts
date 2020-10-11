@@ -1,4 +1,5 @@
 import { Action, Dispatch } from 'redux'
+import ApiBridge from '../utils/apiBridge'
 export const FETCH_POSTS_STARTED = 'FETCH_POSTS_STARTED'
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
@@ -11,11 +12,17 @@ export const fetchPosts = (lastItemId: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch(fetchPostsStarted())
     try {
-      const response = await fetch(
-        `https://www.reddit.com/r/mac/top.json?limit=10&after=${lastItemId}`
+      const response = await ApiBridge.get(
+        `https://www.reddit.com/r/mac/top.json`,
+        {
+          params: {
+            limit: 10,
+            after: lastItemId,
+          }
+        }
       )
-      const json = await response.json()
-      const posts = json.data.children
+      const data = await response.data
+      const posts = data.data.children
       dispatch(fetchPostsSuccess(posts))
     } catch (error) {
       dispatch(fetchPostsFailure(error))

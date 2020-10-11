@@ -30,7 +30,7 @@ describe('Detail component', () => {
     });
 
     it('Should render the image', () => {
-        expect(screen.getByTestId('image'))
+        expect(screen.getByTestId('detail-image'))
             .toHaveProperty('src', 'http://localhost/example.jpg')
     });
 })

@@ -2,6 +2,7 @@ import React from 'react';
 import DateParser from '../../utils/dateParser';
 import Button from '../button';
 import styles from './item.module.css';
+import Image from '../image'
 interface PostProps {
     id: number;
     title: string;
@@ -15,10 +16,6 @@ interface PostProps {
 }
 
 const Item = ({ id, title, author, date, image, comments, clicked, handleClick, handleDismiss }: PostProps) => {
-    const handleError = (event: any) => {
-        event.src = 'https://via.placeholder.com/150'
-    }
-
     return (
         <div data-test="post-component" className={styles.item}>
             <div className={styles.item__top}>
@@ -34,7 +31,7 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                 </span>
             </div>
             <div className={styles.item__body}>
-                <img src={image} alt="" data-test="image" className={styles.item__body__img} onClick={() => handleClick(id)} onError={handleError} />
+                <Image src={image} alt="" dataTest="item" className={styles.item__body__img} onClick={() => handleClick(id)} />
                 <p data-test="title" className={styles.item__body__title}>
                     {title}
                 </p>
@@ -48,7 +45,7 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                 </Button>
                 <span data-test="comments" className={styles.item__bottom_comments}>{comments} comments</span>
             </div>
-        </div>
+        </div >
     )
 }
 

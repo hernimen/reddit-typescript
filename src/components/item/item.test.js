@@ -49,7 +49,7 @@ describe('Post component', () => {
     });
 
     it('Should render the image', () => {
-        expect(screen.getByTestId('image'))
+        expect(screen.getByTestId('item-image'))
             .toHaveProperty('src', 'http://localhost/example.jpg')
     });
 
