@@ -6,11 +6,12 @@ interface ButtonProps {
   onClick?: any;
   dataTest: string;
   disabled?: boolean;
+  styled?: string;
 }
 
-const Button = ({ children, onClick, dataTest, disabled }: ButtonProps) => {
+const Button = ({ children, onClick, dataTest, disabled, styled }: ButtonProps) => {
   return (
-    <button disabled={disabled} className={styles.button} onClick={onClick} data-test={`${dataTest}-button`}>
+    <button disabled={disabled} className={styled || styles.button} onClick={onClick} data-test={`${dataTest}-button`}>
       {children}
     </button>
 

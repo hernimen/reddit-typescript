@@ -11,6 +11,7 @@
   align-items: center;
   transition: all 0.5s;
   width: 300px;
+  padding-bottom: 80px;
 }
 
 .listClosed {
@@ -21,14 +22,16 @@
 .list__loadMore {
   color: orange;
 }
-.list__removebar {
-  /* position: absolute; */
+.list__remove_button {
+  position: fixed;
   bottom: 0;
   background-color: black;
-  padding: 16px 0 16px;
-  width: 100%;
+  padding: 16px;
+  width: 300px;
+  color: orange;
+  border: none;
 }
-.list__removebar:hover {
+.list__remove_button:hover {
   cursor: pointer;
 }
 

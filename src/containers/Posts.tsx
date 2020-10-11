@@ -58,11 +58,9 @@ export function Posts(): JSX.Element {
 
     return (
         <div data-test="posts-component">
-            {/* {loading &&
-                <div>cargando</div>}
-            {!loading && error &&
-                <div>Ocurrio un error </div>
-            } */}
+            {error &&
+                <div>An error ocurred, please reload the page </div>
+            }
             {!error &&
                 <Layout>
                     <List

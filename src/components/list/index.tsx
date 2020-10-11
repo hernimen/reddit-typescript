@@ -47,7 +47,7 @@ const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoad
                 )
             })}
             <Button disabled={loading} dataTest="load-more" onClick={() => handleLoadMorePosts()}>Load more</Button>
-            <Button disabled={loading || !items.length } dataTest="remove-all" onClick={() => handleRemovePosts()}>Dismiss All</Button>
+            <Button styled={styles.list__remove_button} disabled={loading || !items.length } dataTest="remove-all" onClick={() => handleRemovePosts()}>Dismiss All</Button>
         </div>
     )
 }
