@@ -26,7 +26,7 @@
   color: orange;
 }
 .list__removebar {
-  position: sticky;
+  /* position: absolute; */
   bottom: 0;
   background-color: black;
   padding: 16px 0 16px;
@@ -41,4 +41,26 @@
 }
 .list__loadMore:hover {
   cursor: pointer;
+}
+
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.item-exit {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 0.2s ease-out;
+
+}
+
+.item-exit.item-exit-active {
+  opacity: 0.01;
+  transform: translateX(-120%);
+  transition: transform all 0.2s;
 }

@@ -7,16 +7,6 @@ import List from '../components/list';
 import Detail from '../components/detail';
 import Layout from '../components/layout';
 
-interface PostProps {
-    data: {
-        title: string;
-        key: number;
-        author: string;
-        created_utc: number;
-        thumbnail?: string;
-    }
-}
-
 export function Posts(): JSX.Element {
     const listRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
@@ -68,11 +58,11 @@ export function Posts(): JSX.Element {
 
     return (
         <div data-test="posts-component">
-            {loading &&
+            {/* {loading &&
                 <div>cargando</div>}
             {!loading && error &&
                 <div>Ocurrio un error </div>
-            }
+            } */}
             {!error &&
                 <Layout>
                     <List
@@ -83,6 +73,7 @@ export function Posts(): JSX.Element {
                         handleLoadMorePosts={handleLoadMorePosts}
                         listRef={listRef}
                         isListActive={isListActive}
+                        loading={loading}
                     />
                     {post.data &&
                         <Detail item={post} />

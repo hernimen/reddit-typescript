@@ -4,9 +4,9 @@ import styles from './detail.module.css'
 const Detail = ({ item }) => {
     return (
         <div className={styles.detail}>
-            <div className={styles.author} data-test="author"> {item.data.author}</div>
+            <p className={styles.author} data-test="author"> {item.data.author}</p>
             <img className={styles.image} data-test="image" src={item.data?.thumbnail} alt="" />
-            <div className={styles.title} data-test="title"> {item.data.title}</div>
+            <p className={styles.title} data-test="title"> {item.data.title}</p>
         </div>
     )
 }

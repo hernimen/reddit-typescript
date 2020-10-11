@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from '../item'
 import styles from "./list.module.css";
-
 export interface PostProps {
     data: {
         title: string;
@@ -18,6 +17,7 @@ export interface PostProps {
         handleLoadMorePosts: () => void;
         listRef: any;
         isListActive: boolean;
+        loading: boolean;
     }
 }
 
@@ -25,7 +25,7 @@ export interface PostsProps {
     posts?: Array<PostProps>
 }
 
-const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts, listRef, isListActive }) => {
+const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts, listRef, isListActive, loading }) => {
     return (
         <div data-test="list" className={isListActive ? styles.listClosed : styles.list} ref={listRef}>
             <h1>Reddit Posts</h1>
@@ -45,8 +45,8 @@ const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoad
                     />
                 )
             })}
-            <button className={styles.list__loadMore} data-test="load-more" onClick={() => handleLoadMorePosts()}>Load More</button>
-            <button className={styles.list__removebar} onClick={() => handleRemovePosts()}>Dismiss All</button>
+            <button disabled={loading} className={styles.list__loadMore} data-test="load-more" onClick={() => handleLoadMorePosts()}>Load More</button>
+            <button disabled={loading || !items.length} className={styles.list__removebar} onClick={() => handleRemovePosts()}>Dismiss All</button>
         </div>
     )
 }

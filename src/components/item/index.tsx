@@ -25,25 +25,25 @@ const Item = ({ id, title, author, date, image, comments, clicked, handleClick, 
                     <div className={styles.item__read} data-test="item-read">
                     </div>
                 }
-                <span data-test="author" className={styles.item__top__author}>
+                <h2 data-test="author" className={styles.item__top__author}>
                     <strong>{author}</strong>
-                </span>
+                </h2>
                 <span data-test="date" className={styles.item__top__date}>
                     {DateParser.parseDateIntoTimeAgo(date)}
                 </span>
             </div>
             <div className={styles.item__body}>
                 <img src={image} alt="" data-test="image" className={styles.item__body__img} onClick={() => handleClick(id)} onError={handleError} />
-                <div data-test="title" className={styles.item__body__title}>
+                <p data-test="title" className={styles.item__body__title}>
                     {title}
-                </div>
+                </p>
                 <div className={styles.gg_chevron_right}></div>
             </div>
             <div className={styles.item__bottom} >
                 <button onClick={() => handleDismiss(id)} className={styles.item__bottom_dissmiss_ctn}>
                     <span className={styles.gg_close_o} >
                     </span>
-                    <span> Dismiss Post</span>
+                    <p> Dismiss Post</p>
                 </button>
                 <span data-test="comments" className={styles.item__bottom_comments}>{comments} comments</span>
             </div>
