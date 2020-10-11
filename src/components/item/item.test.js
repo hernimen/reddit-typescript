@@ -13,10 +13,12 @@ const MockedProps = {
     image: 'example.jpg',
     comments: '87',
     clicked: false,
+    handleClick: jest.fn(),
+    handleDismiss: jest.fn()
 }
 
 describe('Post component', () => {
-    const { title, author, date, image, comments, clicked } = MockedProps
+    const { title, author, date, image, comments, clicked, handleClick, handleDismiss } = MockedProps
 
     beforeEach(() => {
         render(<Post
@@ -26,6 +28,8 @@ describe('Post component', () => {
             image={image}
             comments={comments}
             clicked={clicked}
+            handleClick={handleClick}
+            handleDismiss={handleDismiss}
         />)
     })
 
@@ -58,4 +62,16 @@ describe('Post component', () => {
         expect(screen.getByTestId('item-read'))
             .toBeDefined()
     });
+
+    // it('Should hide the read dv', done => {
+
+    //     act(() => {
+    //         const image = screen.getByTestId('image')
+    //         fireEvent.click(image)
+    //         done();
+    //     })
+
+    //     expect(screen.getByTestId('item-read'))
+    //         .toBeUndefined()
+    // })
 })
