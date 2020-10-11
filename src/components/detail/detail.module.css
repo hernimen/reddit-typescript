@@ -1,14 +1,18 @@
 .detail {
   display: flex;
   flex-direction: column;
-  max-width: 150px;
+  position: absolute;
+  padding: 32px;
 }
 
 @media only screen and (min-width: 600px) {
-    .detail {
-        max-width: 500px;
-    }
+  .detail {
+    max-width: 500px;
+    position: relative;
+    margin: 0 auto;
+    padding: 16px;
   }
+}
 
 .author {
   display: flex;
