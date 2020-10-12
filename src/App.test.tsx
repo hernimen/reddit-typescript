@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, render, screen } from '@testing-library/react';
+import { configure, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import App from './App';
 import rootReducer from './store';
@@ -25,10 +25,5 @@ describe('App', () => {
   test('renders learn react link', () => {
     expect(app).toBeDefined();
   });
-
-  // it('Should render a list', () => {
-  //   // no mockie la respueta de la api
-  //   expect(screen.getByTestId('list')).toBeDefined()
-  // })
 })
 
