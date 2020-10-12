@@ -67,6 +67,10 @@
   height: 100px;
 }
 
+.item__body__img:hover {
+  cursor: pointer;
+}
+
 .item__bottom {
   display: flex;
   justify-content: space-between;
