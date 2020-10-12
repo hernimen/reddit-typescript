@@ -22,7 +22,7 @@ describe('App', () => {
       </Provider>
     );
   })
-  test('renders learn react link', () => {
+  test('the app should be defined', () => {
     expect(app).toBeDefined();
   });
 })

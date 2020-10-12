@@ -1,11 +1,7 @@
 import React from 'react';
 import { Posts } from './containers/Posts';
 function App() {
-  return (
-    <div className="App">
-      <Posts />
-    </div>
-  );
+  return <Posts />
 }
 
 export default App;
