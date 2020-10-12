@@ -50,7 +50,7 @@ export function Posts(): JSX.Element {
 
     useEffect(() => {
         const handleClickOutsideList = (event) => {
-            if (listRef.current && !listRef.current.contains(event.target)) {//chequear esto
+            if (listRef.current && !listRef.current.contains(event.target)) {
                 setIsListActive(true)
                 return;
             }
