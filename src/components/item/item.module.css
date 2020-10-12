@@ -10,7 +10,8 @@
 
 .gg_chevron_right {
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
+  right: 8px;
   display: block;
   transform: scale(var(--ggs, 1));
   width: 22px;
@@ -46,7 +47,7 @@
 
 .item__top {
   display: flex;
-  padding-bottom: 16px;
+  padding: 16px;
 }
 
 .item__top__author {

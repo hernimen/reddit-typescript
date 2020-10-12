@@ -45,7 +45,7 @@ describe('Post component', () => {
 
     it('Should render the date', () => {
         expect(screen.getByTestId('date'))
-            .toHaveTextContent('4 days ago')
+            .toHaveTextContent('days ago')
     });
 
     it('Should render the image', () => {

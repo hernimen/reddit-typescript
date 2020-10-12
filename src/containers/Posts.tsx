@@ -35,7 +35,7 @@ export function Posts(): JSX.Element {
     const handleLoadMorePosts = () => {
         if (posts.length) {
             setLastItemId(posts[posts.length - 1].data.name)
-            dispatch(fetchPosts(posts[posts.length - 1].data.name))
+            dispatch(fetchPosts(posts[posts.length - 1].data.name))// poner post limit y poner solo el itemID
             return
         }
         setLastItemId('')
