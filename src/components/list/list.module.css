@@ -11,7 +11,7 @@
   align-items: center;
   transition: all 0.5s;
   width: 300px;
-  padding-bottom: 80px;
+  padding-bottom: 45px;
 }
 
 .listClosed {
@@ -26,7 +26,7 @@
   position: fixed;
   bottom: 0;
   background-color: black;
-  padding: 16px;
+  padding: 8px;
   width: 300px;
   color: orange;
   border: none;
@@ -36,7 +36,6 @@
 }
 
 .list__loadMore {
-  padding-bottom: 60px;
   position: sticky;
   color: orange;
   background-color: black;
@@ -47,23 +46,6 @@
   cursor: pointer;
 }
 
-.alert-exit {
-  opacity: 1;
-}
-.alert-exit-active {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.item-exit {
-  opacity: 1;
-  transform: translateX(0%);
-  transition: all 0.2s ease-out;
-}
-
-.item-exit.item-exit-active {
-  opacity: 0.01;
-  transform: translateX(-120%);
-  transition: transform all 0.2s;
+.list__loadMore:disabled {
+  display: none;
 }

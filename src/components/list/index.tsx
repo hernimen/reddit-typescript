@@ -13,21 +13,22 @@ export interface PostProps {
         id: number;
         num_comments: number;
         clicked: boolean;
-        handleClick: (id: number) => void;
-        handleDismiss: (id: number) => void;
-        handleRemovePosts: () => void;
-        handleLoadMorePosts: () => void;
-        listRef?: any;
-        isListActive: boolean;
-        loading: boolean;
     }
+    handleClick: (id: number) => void;
+    handleDismiss: (id: number) => void;
+    handleRemovePosts: () => void;
+    handleLoadMorePosts: () => void;
+    listRef?: any;
+    isListActive: boolean;
+    loading: boolean;
+    currentPage: number;
 }
 
 export interface PostsProps {
     posts?: Array<PostProps>
 }
 
-const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts, listRef, isListActive, loading }) => {
+const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts, listRef, isListActive, loading, currentPage }) => {
     const transitions = useTransition(items, item => item.data.id, {
         initial: { transform: 'translate3d(0%, 0%,0)' },
         from: { transform: 'translate3d(0%,-100%,0)' },
@@ -59,7 +60,7 @@ const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoad
                     </animated.div>
                 )
             })}
-            <Button styled={styles.list__loadMore} disabled={loading} dataTest="load-more" onClick={handleLoadMorePosts}>Load more</Button>
+            <Button styled={styles.list__loadMore} disabled={loading || currentPage === 5} dataTest="load-more" onClick={handleLoadMorePosts}>Load more</Button>
             <Button styled={styles.list__remove_button} disabled={loading || !items.length} dataTest="remove-all" onClick={handleRemovePosts}>Dismiss All</Button>
         </div>
     )

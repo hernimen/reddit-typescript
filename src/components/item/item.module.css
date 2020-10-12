@@ -11,7 +11,7 @@
 .gg_chevron_right {
   box-sizing: border-box;
   position: absolute;
-  right: 8px;
+  right: 4px;
   display: block;
   transform: scale(var(--ggs, 1));
   width: 22px;
@@ -55,14 +55,11 @@
   margin: 0;
 }
 
-.item__top__date {
-  padding-right: 8px;
-}
-
 .item__body {
   display: flex;
-  padding: 0 8px 0 8px;
+  padding: 0 24px 0 8px;
 }
+
 .item__body__img {
   padding: 0 8px 8px 0;
   object-fit: cover;
@@ -93,5 +90,9 @@
   color: orange;
 }
 .item__body__title {
-  max-width: 190px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
