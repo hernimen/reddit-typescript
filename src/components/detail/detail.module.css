@@ -1,25 +1,30 @@
 .detail {
   display: flex;
   flex-direction: column;
+  padding: 32px;
   position: absolute;
-  padding: 32px 16px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 600px) {
   .detail {
     max-width: 500px;
-    position: relative;
-    margin: 0 auto;
   }
 }
 
 .author {
   display: flex;
+  justify-content: center;
 }
 
 .title {
   display: flex;
-  word-wrap: break-word;
+  justify-content: center;
 }
 
 .image {
