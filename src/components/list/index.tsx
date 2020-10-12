@@ -38,7 +38,7 @@ const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoad
     return (
         <div data-test="list" className={isListActive ? styles.listClosed : styles.list} ref={listRef}>
             <h1>Reddit Posts</h1>
-            {transitions.map((transition: { props: any, item: PostProps }) => {
+            {transitions.map((transition: { props: {}, item: PostProps }) => {
                 return (
                     <animated.div
                         key={transition.item.data.id}
