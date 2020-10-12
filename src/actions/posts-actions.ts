@@ -6,7 +6,6 @@ export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
 export const POST_CLICKED = 'POST_CLICKED'
 export const POST_DISMISS = 'POST_DISMISS'
 export const POSTS_REMOVED = 'POSTS_REMOVED'
-export const POST_SELECTED = 'POST_SELECTED'
 
 export const fetchPosts = (lastItemId: string) => {
   return async (dispatch: Dispatch<Action>) => {
@@ -53,13 +52,6 @@ export const fetchPostsFailure = (error: Error) => {
 export const clickPost = (id: number) => {
   return {
     type: POST_CLICKED,
-    payload: id
-  }
-}
-
-export const selectPost = (id: number) => {
-  return {
-    type: POST_SELECTED,
     payload: id
   }
 }

@@ -6,7 +6,6 @@ import {
   POST_CLICKED,
   POST_DISMISS,
   POSTS_REMOVED,
-  POST_SELECTED
 } from '../actions/posts-actions'
 
 const initialState = {
@@ -63,13 +62,6 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
             }
             return post
           }
-        )
-      }
-    case POST_SELECTED:
-      return {
-        ...state,
-        post: state.posts.find(
-          (post: { data: { id: string } }) => post.data.id === action.payload
         )
       }
     default:
