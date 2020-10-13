@@ -12,7 +12,7 @@ const initialState = {
   posts: [],
   loading: false,
   error: null,
-  post: {}
+  post: { data: { id: null } }
 }
 
 const PostsReducer = (state = initialState, action: AnyAction) => {
@@ -43,6 +43,16 @@ const PostsReducer = (state = initialState, action: AnyAction) => {
         posts: []
       }
     case POST_DISMISS:
+      const { post } = state
+      if (post.data && post.data.id === action.payload) {
+        return {
+          ...state,
+          post: {},
+          posts: state.posts.filter(
+            (post: { data: { id: number } }) => post.data.id !== action.payload
+          )
+        }
+      }
       return {
         ...state,
         posts: state.posts.filter(

@@ -80,7 +80,7 @@ export function Posts(): JSX.Element {
                         loading={loading}
                         currentPage={currentPage}
                     />
-                    {post.data &&
+                    {post.data && post.data.id &&
                         <Detail item={post} />
                     }
                 </Layout>
