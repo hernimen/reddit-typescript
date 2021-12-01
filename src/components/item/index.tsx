@@ -3,7 +3,8 @@ import DateParser from '../../utils/dateParser';
 import Button from '../button';
 import styles from './item.module.css';
 import Image from '../image'
-interface PostProps {
+
+interface PostProps extends Readonly<{
     id: number;
     title: string;
     author: string;
@@ -13,7 +14,7 @@ interface PostProps {
     clicked: boolean;
     handleClick: (id: number) => void;
     handleDismiss: (id: number) => void;
-}
+}> { }
 
 const Item = ({ id, title, author, date, image, comments, clicked, handleClick, handleDismiss }: PostProps) => {
     return (

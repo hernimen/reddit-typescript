@@ -3,30 +3,29 @@ import { useTransition, animated } from 'react-spring';
 import Button from '../button';
 import Post from '../item'
 import styles from "./list.module.css";
-export interface PostProps {
-    data: {
-        title: string;
-        key: number;
-        author: string;
-        created_utc: number;
-        thumbnail?: string;
-        id: number;
-        num_comments: number;
-        clicked: boolean;
-    }
+
+interface Data extends Readonly<{
+    title: string;
+    key: number;
+    author: string;
+    created_utc: number;
+    thumbnail?: string;
+    id: number;
+    num_comments: number;
+    clicked: boolean;
+}> { }
+
+interface PostProps extends Readonly<{
+    data: Data;
     handleClick: (id: number) => void;
     handleDismiss: (id: number) => void;
     handleRemovePosts: () => void;
     handleLoadMorePosts: () => void;
-    listRef?: any;
+    listRef?: React.RefObject<HTMLInputElement>;
     isListActive: boolean;
     loading: boolean;
     currentPage: number;
-}
-
-export interface PostsProps {
-    posts?: Array<PostProps>
-}
+}> { }
 
 const List = ({ items, handleClick, handleDismiss, handleRemovePosts, handleLoadMorePosts, listRef, isListActive, loading, currentPage }) => {
     const transitions = useTransition(items, item => item.data.id, {

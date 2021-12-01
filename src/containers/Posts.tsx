@@ -26,8 +26,7 @@ export function Posts(): JSX.Element {
     const handleLoadMorePosts = () => {
         if (posts.length) {
             const postId = posts[posts.length - 1].data.name
-            setLastItemId(postId)
-            return
+            return setLastItemId(postId)
         }
         setLastItemId('')
         dispatch(fetchPosts(lastItemId))
@@ -49,8 +48,8 @@ export function Posts(): JSX.Element {
     }, [])
 
     useEffect(() => {
-        const handleClickOutsideList = (event) => {
-            if (listRef.current && !listRef.current.contains(event.target)) {
+        const handleClickOutsideList = (event: Event) => {
+            if (listRef.current && !listRef.current.contains(event.target as HTMLInputElement)) {
                 setIsListActive(true)
                 return;
             }

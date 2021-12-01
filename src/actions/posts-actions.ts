@@ -1,8 +1,10 @@
+import Axios from 'axios'
 import { Action, Dispatch } from 'redux'
-import ApiBridge from '../utils/apiBridge'
+
 export const FETCH_POSTS_STARTED = 'FETCH_POSTS_STARTED'
 export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS'
 export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE'
+
 export const POST_CLICKED = 'POST_CLICKED'
 export const POST_DISMISS = 'POST_DISMISS'
 export const POSTS_REMOVED = 'POSTS_REMOVED'
@@ -11,7 +13,7 @@ export const fetchPosts = (lastItemId: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch(fetchPostsStarted())
     try {
-      const response = await ApiBridge.get(
+      const response = await Axios.get(
         `https://www.reddit.com/r/mac/top.json`,
         {
           params: {
@@ -24,7 +26,7 @@ export const fetchPosts = (lastItemId: string) => {
       const posts = data.data.children
       dispatch(fetchPostsSuccess(posts))
     } catch (error) {
-      dispatch(fetchPostsFailure(error))
+      dispatch(fetchPostsFailure(error as Error))
     }
   }
 }
@@ -35,7 +37,7 @@ export const fetchPostsStarted = () => {
   }
 }
 
-export const fetchPostsSuccess = (data: any) => {
+export const fetchPostsSuccess = (data: Object) => {
   return {
     type: FETCH_POSTS_SUCCESS,
     payload: data

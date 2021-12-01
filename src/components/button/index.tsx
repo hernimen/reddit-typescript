@@ -3,7 +3,7 @@ import styles from './button.module.css';
 
 interface ButtonProps {
   children?: React.ReactNode,
-  onClick?: any;
+  onClick: () => void;
   dataTest: string;
   disabled?: boolean;
   styled?: string;
