@@ -9,12 +9,13 @@ import Layout from '../components/layout';
 
 export function Posts(): JSX.Element {
     const PAGES_LIMIT = 5;
+    const INITIAL_PAGE = 0;
     const listRef = useRef<HTMLDivElement>(null);
     const dispatch = useDispatch();
     const [lastItemId, setLastItemId] = useState('')
     const { posts, loading, error, post } = useSelector((state: initialState) => state.postsReducer);
     const [isListActive, setIsListActive] = useState(false)
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(INITIAL_PAGE);
 
     useEffect(() => {
         if (currentPage <= PAGES_LIMIT) {
@@ -44,7 +45,7 @@ export function Posts(): JSX.Element {
 
     const handleRemovePosts = useCallback(() => {
         dispatch(removePosts())
-        setCurrentPage(0)
+        setCurrentPage(INITIAL_PAGE)
     }, [])
 
     useEffect(() => {
@@ -63,10 +64,9 @@ export function Posts(): JSX.Element {
 
     return (
         <div data-test="posts-component">
-            {error &&
-                <div>An error ocurred, please reload the page </div>
-            }
-            {!error &&
+            {error ?
+                <p>An error ocurred, please reload the page </p>
+                :
                 <Layout>
                     <List
                         items={posts}

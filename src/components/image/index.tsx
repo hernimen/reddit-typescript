@@ -1,13 +1,14 @@
 import React from 'react'
 import placeholder from '../../images/placeholder.png'
 
-interface ImageProps {
+interface ImageProps extends Readonly<{
     src?: string
     alt: string
     dataTest: string
     className: string
     onClick?: () => void
-}
+}> { }
+
 const Image = ({
     src,
     alt,
